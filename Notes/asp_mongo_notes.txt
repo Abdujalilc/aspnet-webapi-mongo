@@ -1,1 +1,57 @@
-﻿
+﻿BookStore.Books
+
+mongod --dbpath c:\BooksData\
+
+mongo
+
+use BookStore
+
+--------------------
+db.createCollection('Books')
+
+{ "ok" : 1 }
+
+
+--------------------
+db.Books.insertMany([{ "Name": "Design Patterns", "Price": 54.93, "Category": "Computers", "Author": "Ralph Johnson" }, { "Name": "Clean Code", "Price": 43.15, "Category": "Computers","Author": "Robert C. Martin" }])
+
+{
+    "acknowledged" : true,
+    "insertedIds" : [
+        ObjectId("61a6058e6c43f32854e51f51"),
+        ObjectId("61a6058e6c43f32854e51f52")
+     ]
+ }
+--------------------
+db.Books.find().pretty()
+
+{
+     "_id" : ObjectId("61a6058e6c43f32854e51f51"),
+     "Name" : "Design Patterns",
+     "Price" : 54.93,
+     "Category" : "Computers",
+     "Author" : "Ralph Johnson"
+ }
+ {
+     "_id" : ObjectId("61a6058e6c43f32854e51f52"),
+     "Name" : "Clean Code",
+     "Price" : 43.15,
+     "Category" : "Computers",
+     "Author" : "Robert C. Martin"
+ }
+
+ --------------------
+ Install-Package MongoDB.Driver
+ --------------------
+ "BookStoreDatabase": {
+        "ConnectionString": "mongodb://localhost:27017",
+        "DatabaseName": "BookStore",
+        "BooksCollectionName": "Books"
+    },
+ --------------------
+ https://localhost:<port>/api/books
+ https://localhost:<port>/api/books/{id here}
+
+
+
+
