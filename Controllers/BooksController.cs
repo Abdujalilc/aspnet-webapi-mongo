@@ -31,7 +31,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(Book newBook)
+    public async Task<IActionResult> Post(Book[] newBook)
     {
         await _booksService.CreateAsync(newBook);
 
